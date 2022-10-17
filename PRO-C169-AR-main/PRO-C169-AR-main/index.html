@@ -30,7 +30,23 @@
     <script src="./js/addButtons.js"></script>
     <script src="./js/markerhandler.js"></script>
   </head>
-
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyCLsz915GhQpeCDz997IYBrVLVTWia_rGQ",
+      authDomain: "school-attendence-app-3cee3.firebaseapp.com",
+      databaseURL: "https://school-attendence-app-3cee3-default-rtdb.firebaseio.com",
+      projectId: "school-attendence-app-3cee3",
+      storageBucket: "school-attendence-app-3cee3.appspot.com",
+      messagingSenderId: "962174462057",
+      appId: "1:962174462057:web:c7e17365719d73078b1af8",
+      measurementId: "G-CV9L4LYSLY"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </scrip
+  
+  };
   <body style="margin : 0px; overflow: hidden;">
     <a-scene
       vr-mode-ui="enabled: false"
