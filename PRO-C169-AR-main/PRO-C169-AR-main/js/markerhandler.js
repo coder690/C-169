@@ -43,4 +43,35 @@ AFRAME.registerComponent("markerhandler", {
     var buttonDiv = document.getElementById("button-div");
     buttonDiv.style.display = "none";
   }
+  
+  handleOrder:function(uid,toy){
+    firebase
+    .firestore()
+    .collection("users")
+    .doc(uid)
+    .get()
+    .then(doc=>{
+        var details=doc.data();
+        if(details["current_orders"][toy.id]){
+            details["current_orders"][toy.id]["quantity"]+=1;
+
+            var currentQuantity=details["current_orders"][toy.id][quantity];
+            details["current_orders"][toy.id]["subtotal"]=currentQuantity*toy.price;
+        }else{
+            details["current_orders"][toy.id]={
+                item:toy.toy_name,
+                price:toy.price,
+                quantity:1,
+                subtotal:toy.price*1
+            };
+        }
+        details.total_bill+=toy.price;
+        firebase
+        .firestore()
+        .collection("users")
+        .doc(doc.id)
+        .update(details)
+    });
+},
 });
+
