@@ -23,3 +23,13 @@ AFRAME.registerComponent("create-markers", {
         model.setAttribute("gesture-handler",{});
         model.setAttribute("animation-mixer",{});
         marker.appendChild(model);
+          
+          getOrderSummary:async function(uid){
+          return await firebase
+          .firestore()
+          .collection("users")
+          .doc(uid)
+          .get()
+          .then(doc=>doc.data())
+          },
+          
